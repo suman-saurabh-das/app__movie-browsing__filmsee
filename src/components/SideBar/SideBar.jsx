@@ -31,7 +31,7 @@ function SideBar({showSidebar, setShowSidebar}) {
                 key={value} to="/" 
                 onClick={() => setShowSidebar(false)} 
                 className="flex gap-6 pl-4 py-3 text-lg">
-                <i class="uil uil-clapper-board text-xl"></i>
+                <i className="uil uil-clapper-board text-xl"></i>
                 {label}
               </Link>
             ))
@@ -48,7 +48,7 @@ function SideBar({showSidebar, setShowSidebar}) {
                 key={value} to="/" 
                 onClick={() => setShowSidebar(false)} 
                 className="flex gap-6 pl-4 py-3 text-lg">
-                <i class="uil uil-film text-xl"></i>
+                <i className="uil uil-film text-xl"></i>
                 {label}
               </Link>
             ))
