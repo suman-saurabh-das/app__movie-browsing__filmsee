@@ -1,6 +1,6 @@
 import React from 'react'
-import appLogoDark from '../../assets/Navbar/appLogoDark.png'
-import appLogoLight from '../../assets/Navbar/appLogoLight.png'
+import appLogoDark from '../../assets/navbar/appLogoDark.png'
+import appLogoLight from '../../assets/navbar/appLogoLight.png'
 import SideBar from './SideBar'
 import { Link } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
   return (
     <main>
       {/* Top bar - START */}
-      <div className="fixed bg-bgLightPrimary dark:bg-bgDarkSecondary h-32 sm:h-24 transition-all duration-300 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-50">
+      <div className="fixed bg-bgLightPrimary dark:bg-bgDarkSecondary h-32 sm:h-24 transition-all duration-500 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-50">
         <div className="flex items-center justify-between max-w-[90%] mx-auto pt-3 sm:pt-6">
           {/* App Logo Container - START */}
           <Link to="/">
