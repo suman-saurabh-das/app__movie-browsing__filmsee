@@ -1,16 +1,32 @@
-import React, {useState, useEffect} from 'react'
-import { useSelector } from 'react-redux'
+// import React, { useState, useEffect } from 'react'
+// import { useSelector } from 'react-redux'
+// import { useGetMoviesQuery } from '../../services/TMDB'
 
-import { useGetMoviesQuery } from '../../services/TMDB'
+import MovieList from './MovieList'
+import { data } from '../../data'
 
 function Movies({ showSidebar }) {
-  const {data} = useGetMoviesQuery()
-  console.log(data);
+  // const {data, error, isFetching} = useGetMoviesQuery()
+  const error = false, isFetching = false;
+
+  if(isFetching) {
+    return <span>Loading...</span>
+  }
+  if(!data.results.length) {
+    return <span>No movies that match that name.<br />Please search for something else.</span>
+  }
+  if(error) {
+    return <span>Oops ! some error has occurred</span>
+  }
 
   return (
-    <main className={`dark:bg-bgDarkPrimary h-[100vh] pt-32 sm:pt-24 sm:ml-64 text-black dark:text-white transition-all duration-500 ${showSidebar ? 'overflow-y-hidden bg-black/[0.5] dark:bg-black/[0.7]' : 'overflow-y-scroll'}`}>
+    <main className={`main-container 
+    ${showSidebar
+        ? 'overflow-y-hidden'
+        : 'overflow-y-scroll'}`}
+    >
       <div className="p-4">
-
+        <MovieList movies={data} />
       </div>
     </main>
   )

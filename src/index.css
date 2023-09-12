@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .main-container {
+    @apply dark:bg-bgDarkPrimary h-[100vh] pt-32 sm:pt-24 sm:ml-56 text-black dark:text-white transition-all duration-500
+  }
+}

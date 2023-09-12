@@ -18,10 +18,10 @@ function SideBar({showSidebar, setShowSidebar}) {
   ]
 
   return (
-    <div>
+    <div className="text-black dark:text-white transition-all duration-300">
       {/* Sidebar - START */}
-      <nav className={`${showSidebar ? '' : '-translate-x-64'} sm:translate-x-0 absolute bg-white dark:bg-bgDarkPrimary duration-500 h-[100vh] overflow-y-scroll text-black dark:text-white top-0 transition-all w-64`}>
-        <div className='mt-32 sm:mt-24'>
+      <nav className={`${showSidebar ? '' : '-translate-x-full'} sm:translate-x-0 fixed bg-black/[0.5] h-[100vh] overflow-y-auto top-0 w-full sm:w-56 z-40`}>
+        <div className={`${showSidebar ? '' : '-translate-x-56'} sm:translate-x-0 bg-white dark:bg-bgDarkPrimary mt-32 sm:mt-24 h-full w-56`}>
           {/* Categories 1 - START */}
           <div className="flex flex-col">
           <h3 className="p-4 text-sm">Categories</h3>
@@ -38,7 +38,9 @@ function SideBar({showSidebar, setShowSidebar}) {
           }
           </div>
           {/* Categories 1 - END */}
+          
           <hr className="my-2 mx-auto w-[90%]" />
+
           {/* Categories 2 - START */}
           <div className="flex flex-col">
           <h3 className="p-4 text-sm">Genres</h3>
