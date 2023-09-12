@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MovieCard({ movie }) {
-  console.log(movie);
   return (
     <div className="p-5 sm:p-3">
       <Link to={`/movie/${movie.id}`}>
@@ -25,10 +24,10 @@ function MovieCard({ movie }) {
                 <span key={index}>
                   {// Logic : rating = 4.4, i+1 = 1, n = 0.5 (loop over to get rating)
                     (movie.vote_average/2) >= index + 1 
-                      ? (<i class="uis uis-star"></i>) 
+                      ? (<i className="uis uis-star"></i>) 
                       : movie.vote_average/2 >= number 
-                      ? (<i class="uis uis-star-half-alt"></i>)
-                      : (<i class="uil uil-star"></i>) 
+                      ? (<i className="uis uis-star-half-alt"></i>)
+                      : (<i className="uil uil-star"></i>) 
                   }
                 </span>
               )
