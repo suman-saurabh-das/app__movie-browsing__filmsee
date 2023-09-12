@@ -30,7 +30,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
             >
               {
                 showSidebar
-                  ? <i class="uil uil-times text-2xl"></i>
+                  ? <i className="uil uil-times text-2xl"></i>
                   : <i className="uil uil-bars text-2xl"></i>
               }
             </button>

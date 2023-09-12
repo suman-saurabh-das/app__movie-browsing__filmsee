@@ -2,15 +2,14 @@ import React from 'react'
 import SidebarCategories from './SidebarCategories'
 import { useGetGenresQuery } from '../../services/TMDB'
 
+
 function SideBar({ showSidebar, setShowSidebar }) {
   const categories = [
     { id: 'popular', name: 'Popular' },
-    { id: 'topRated', name: 'Top rated' },
+    { id: 'top_rated', name: 'Top rated' },
     { id: 'upcoming', name: 'Upcoming' },
   ]
-
   const { data, isFetching } = useGetGenresQuery()
-  console.log(data);
 
   return (
     <div className="text-black dark:text-white transition-all duration-500">
@@ -23,7 +22,11 @@ function SideBar({ showSidebar, setShowSidebar }) {
             <h3 className="p-4 text-sm">Categories</h3>
             {
               categories.map(({ id, name }) => (
-                <SidebarCategories id={id} name={name} setShowSidebar={setShowSidebar} />
+                <SidebarCategories key={id}
+                  id={id} 
+                  name={name} 
+                  setShowSidebar={setShowSidebar}
+                />
               ))
             }
           </div>
@@ -38,7 +41,11 @@ function SideBar({ showSidebar, setShowSidebar }) {
               isFetching
                 ? <span>Loading...</span>
                 : data.genres.map(({ id, name }) => (
-                  <SidebarCategories id={id} name={name} setShowSidebar={setShowSidebar} />
+                  <SidebarCategories key={id}
+                    id={id} 
+                    name={name} 
+                    setShowSidebar={setShowSidebar} 
+                  />
                 ))
             }
           </div>
