@@ -11,7 +11,7 @@ function MovieCard({ movie }) {
             alt={movie.title}
             src={movie.poster_path
               ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-              : 'https://www.fillmurray.com/200/300'}
+              : 'https://murphys-movies.vercel.app/movie-poster-placeholder.svg'}
             className="rounded-lg w-full"
           />
         </div>

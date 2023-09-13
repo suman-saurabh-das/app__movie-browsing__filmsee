@@ -1,8 +1,10 @@
 import React from 'react'
 import appLogoDark from '../../assets/navbar/appLogoDark.png'
 import appLogoLight from '../../assets/navbar/appLogoLight.png'
-import SideBar from './SideBar'
+
 import { Link } from 'react-router-dom'
+import SideBar from './SideBar'
+import SearchBar from './SearchBar'
 
 function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
 
@@ -36,13 +38,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
             </button>
 
             {/* Search Bar */}
-            <div className="flex items-center border-b border-black dark:border-white w-full">
-              <i className="uil uil-search"></i>
-              <input
-                className="bg-transparent outline-none p-2"
-                type="text"
-              />
-            </div>
+            <SearchBar />
           </div>
           {/* Hamburger menu & Search Bar container - END */}
 

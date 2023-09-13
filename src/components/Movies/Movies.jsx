@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useGetMoviesQuery } from '../../services/TMDB'
 
@@ -6,8 +6,8 @@ import MovieList from './MovieList'
 
 function Movies({ showSidebar }) {
   const [page, setPage] = useState(1)
-  const { genreIdOrCategoryName } = useSelector(state => state.currentGenreIdOrCategoryName)
-  const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page })
+  const { genreIdOrCategoryName, searchQuery } = useSelector(state => state.currentGenreIdOrCategoryName)
+  const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery })
 
   if (isFetching) {
     return <span>Loading...</span>
