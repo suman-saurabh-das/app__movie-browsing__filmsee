@@ -6,7 +6,7 @@ function MovieCard({ movie }) {
     <div className="p-5 sm:p-3">
       <Link to={`/movie/${movie.id}`}>
         {/* Image Container */}
-        <div className="mx-auto rounded-lg w-full hover:scale-105 transition-all duration-300">
+        <div className="mx-auto rounded-lg hover:scale-105 shadow-md shadow-slate-900 transition-all duration-300 w-full">
           <img
             alt={movie.title}
             src={movie.poster_path
