@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Rating from '../Common/Rating'
 
 function MovieCard({ movie }) {
   return (
@@ -18,23 +19,8 @@ function MovieCard({ movie }) {
         </div>
 
         {/* Rating Container */}
-        <div className="pt-3 text-yellow-500 text-center">
-          {
-            Array.from({ length: 5 }, (el, index) => {
-              let number = index + 0.5
-              return (
-                <span key={index}>
-                  {// Logic : rating = 4.4, i+1 = 1, n = 0.5 (loop over to get rating)
-                    (movie.vote_average / 2) >= index + 1
-                      ? (<i className="uis uis-star"></i>)
-                      : movie.vote_average / 2 >= number
-                        ? (<i className="uis uis-star-half-alt"></i>)
-                        : (<i className="uil uil-star"></i>)
-                  }
-                </span>
-              )
-            })
-          }
+        <div className="pt-3 text-center">
+          <Rating rating={movie.vote_average} />
         </div>
 
         {/* Movie name Container */}
