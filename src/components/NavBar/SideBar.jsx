@@ -1,7 +1,7 @@
 import React from 'react'
 import SidebarCategories from './SidebarCategories'
 import { useGetGenresQuery } from '../../services/TMDB'
-
+import Loader from '../Common/Loader'
 
 function SideBar({ showSidebar, setShowSidebar }) {
   const categories = [
@@ -10,7 +10,7 @@ function SideBar({ showSidebar, setShowSidebar }) {
     { id: 'upcoming', name: 'Upcoming' },
   ]
   const { data, isFetching } = useGetGenresQuery()
-
+  
   return (
     <div className="text-black dark:text-white">
       {/* Sidebar - START */}
@@ -23,8 +23,8 @@ function SideBar({ showSidebar, setShowSidebar }) {
             {
               categories.map(({ id, name }) => (
                 <SidebarCategories key={id}
-                  id={id} 
-                  name={name} 
+                  id={id}
+                  name={name}
                   setShowSidebar={setShowSidebar}
                 />
               ))
@@ -39,12 +39,12 @@ function SideBar({ showSidebar, setShowSidebar }) {
             <h3 className="p-4 text-sm">Genres</h3>
             {
               isFetching
-                ? <span>Loading...</span>
+                ? <Loader width={7} />
                 : data.genres.map(({ id, name }) => (
                   <SidebarCategories key={id}
-                    id={id} 
-                    name={name} 
-                    setShowSidebar={setShowSidebar} 
+                    id={id}
+                    name={name}
+                    setShowSidebar={setShowSidebar}
                   />
                 ))
             }

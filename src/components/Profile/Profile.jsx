@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 function Profile({ showSidebar }) {
-  const userInformation = useSelector(state => state.user)
   const logout = () => {
     localStorage.clear()
     window.location.href = '/'
