@@ -13,7 +13,7 @@ function Profile({ showSidebar }) {
         ? 'overflow-y-hidden bg-black/[0.5] dark:bg-black/[0.7]'
         : 'overflow-y-scroll'}`}
     >
-      <div className="p-4 sm:p-6 lg:p-8">
+      <div className="p-4 pt-6 sm:p-6 lg:p-8">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-2xl lg:text-3xl">My Profile</h3>
           <button 

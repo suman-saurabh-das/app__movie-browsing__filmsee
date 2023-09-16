@@ -16,7 +16,7 @@ function Movies({ showSidebar }) {
         ? 'overflow-y-hidden'
         : 'overflow-y-scroll'}`}
     >
-      <div className="p-4">
+      <div className="p-4 pt-8">
         {
           isFetching && <Loader width={10} />
         }

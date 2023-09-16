@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
 import Movies from './components/Movies/Movies';
 import Actors from './components/Actors/Actors'
-import MovieInformation from './components/MovieInformation/MovieInformation'
+import MovieInformation from './components/Movies/MovieInformation'
 import Profile from './components/Profile/Profile'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <main className={`App ${darkTheme ? 'dark' : '' } 2xl:max-w-[1920px] mx-auto`}>
+    <main className={`App ${darkTheme ? 'dark' : '' } font-primary 2xl:max-w-[1920px] mx-auto`}>
       <NavBar 
         darkTheme={darkTheme} 
         setDarkTheme={setDarkTheme}

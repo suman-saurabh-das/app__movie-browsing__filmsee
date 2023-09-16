@@ -10,7 +10,6 @@ function SideBar({ showSidebar, setShowSidebar }) {
     { id: 'upcoming', name: 'Upcoming' },
   ]
   const { data, isFetching } = useGetGenresQuery()
-  console.log(data);
   
   return (
     <div className="text-black dark:text-white">
@@ -20,7 +19,7 @@ function SideBar({ showSidebar, setShowSidebar }) {
 
           {/* Categories 1 - START */}
           <div className="flex flex-col">
-            <h3 className="p-4 text-sm">Categories</h3>
+            <h3 className="p-4 pt-8 font-semibold text-sm">Categories</h3>
             {
               categories.map(({ id, name }) => (
                 <SidebarCategories key={id}
@@ -37,11 +36,11 @@ function SideBar({ showSidebar, setShowSidebar }) {
 
           {/* Categories 2 - START */}
           <div className="flex flex-col">
-            <h3 className="p-4 text-sm">Genres</h3>
+            <h3 className="p-4 font-semibold text-sm">Genres</h3>
             {
               isFetching
                 ? <Loader width={7} />
-                : data.genres.map(({ id, name }) => (
+                : data?.genres.map(({ id, name }) => (
                   <SidebarCategories key={id}
                     id={id}
                     name={name}
