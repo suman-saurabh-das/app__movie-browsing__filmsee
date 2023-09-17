@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Loader from '../Common/Loader'
 import Rating from '../Common/Rating'
@@ -8,13 +8,14 @@ import { selectGenreIdOrCategoryName } from '../../features/currentGenreIdOrCate
 import { useGetMovieQuery } from '../../services/TMDB'
 import { useGetRecommendationsQuery } from '../../services/TMDB'
 import MovieCard from './MovieCard'
+import TrailerModal from './TrailerModal'
 
 function MovieInformation({ showSidebar }) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { id } = useParams()
   const dispatch = useDispatch()
   const { data, isFetching, error } = useGetMovieQuery(id)
-  const { data: recommendations, isFetching: isFetchingRecommendations, error: errorFetchingRecommendations } = useGetRecommendationsQuery({ movie_id: id, list: '/recommendations' })
-  console.log(recommendations);
+  const { data: recommendations, isFetching: isFetchingRecommendations } = useGetRecommendationsQuery({ movie_id: id, list: '/recommendations' })
 
   const isFavorited = false
   const isWatchlisted = false
@@ -96,7 +97,7 @@ function MovieInformation({ showSidebar }) {
                         to="/"
                       >
                         <img
-                          className="w-6 dark:invert"
+                          className="duration-500 dark:invert hover:rotate-[360deg] transition-all w-6"
                           src={genreIcons[genre?.name.toLowerCase()]}
                           alt="genre-icon"
                         />
@@ -146,7 +147,6 @@ function MovieInformation({ showSidebar }) {
 
                 {/* Navigation Buttons */}
                 <div className="mt-8">
-                  {/* Button group 1 */}
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 xl:grid-cols-6">
                     <button
                       className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
@@ -165,7 +165,7 @@ function MovieInformation({ showSidebar }) {
                     <button
                       className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
                       href="#"
-                      onClick={() => { }}
+                      onClick={() => setIsModalOpen(true)}
                     >
                       Trailer <i className="uil uil-youtube"></i>
                     </button>
@@ -200,7 +200,6 @@ function MovieInformation({ showSidebar }) {
               <h2 className="font-semibold text-center text-3xl lg:text-4xl">
                 You might also like
               </h2>
-
               <div className="mt-8">
                 {
                   isFetchingRecommendations
@@ -216,6 +215,19 @@ function MovieInformation({ showSidebar }) {
                       : <span>Unable to find similar movies !</span>
                 }
               </div>
+            </div>
+
+            {/* Movie Trailer */}
+            <div>
+              {
+                data?.videos?.results.length > 0
+                  ? <TrailerModal
+                    isModalOpen={isModalOpen} 
+                    setIsModalOpen={setIsModalOpen} 
+                    videos={data.videos}
+                    />
+                  : <p>No trailer found !</p>
+              }
             </div>
           </>
         }

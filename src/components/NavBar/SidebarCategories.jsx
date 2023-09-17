@@ -14,7 +14,7 @@ function SidebarCategories({ id, name, setShowSidebar }) {
         dispatch(selectGenreIdOrCategoryName(id))
       }}
       className="flex gap-6 pl-4 py-3 hover:bg-gradient-to-r hover:from-cyan-300 hover:to-cyan-200 dark:from-zinc-800 dark:to-zinc-600">
-      <img className="w-6 dark:invert" src={genreIcons[name.toLowerCase()]} alt="genre-icon" />
+      <img className="duration-500 dark:invert hover:rotate-[360deg] transition-all w-6" src={genreIcons[name.toLowerCase()]} alt="genre-icon" />
       {name}
     </Link>
   )

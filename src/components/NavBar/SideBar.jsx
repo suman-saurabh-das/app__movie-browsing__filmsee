@@ -10,12 +10,17 @@ function SideBar({ showSidebar, setShowSidebar }) {
     { id: 'upcoming', name: 'Upcoming' },
   ]
   const { data, isFetching } = useGetGenresQuery()
-  
+  const handleSidebarClose = (e) => {
+    if (e.target.id === "sidebarWrapper") {
+      setShowSidebar(false)
+    }
+  }
+
   return (
     <div className="text-black dark:text-white">
       {/* Sidebar - START */}
-      <nav className={`${showSidebar ? '' : '-translate-x-full'} sm:translate-x-0 bg-black/[0.5] fixed max-h-full overflow-y-auto top-0 w-full sm:w-56 z-40`}>
-        <div className={`${showSidebar ? '' : '-translate-x-56'} sm:translate-x-0 bg-white dark:bg-bgDarkSecondary mt-32 sm:mt-24 w-56 sm:w-full transition-all duration-500`}>
+      <nav id="sidebarWrapper" onClick={handleSidebarClose} className={`${showSidebar ? '' : '-translate-x-full'} sm:translate-x-0 bg-black/[0.5] fixed max-h-full overflow-y-auto top-0 w-full sm:w-56 transition-all duration-500`}>
+        <div className={`${showSidebar ? '' : '-translate-x-56'} sm:translate-x-0 bg-white dark:bg-bgDarkSecondary min-h-[100vh] mt-32 sm:mt-24 w-56 sm:w-full`}>
 
           {/* Categories 1 - START */}
           <div className="flex flex-col">
