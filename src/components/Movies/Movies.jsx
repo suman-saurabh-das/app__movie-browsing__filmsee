@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import Loader from '../Common/Loader'
-
 import { useGetMoviesQuery } from '../../services/TMDB'
+
+import Loader from '../Common/Loader'
 import MovieList from './MovieList'
 
 function Movies({ showSidebar }) {

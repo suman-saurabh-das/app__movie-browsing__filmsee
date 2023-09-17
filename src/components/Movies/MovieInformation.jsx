@@ -44,21 +44,21 @@ function MovieInformation({ showSidebar }) {
         }
         {
           !isFetching && !error && <>
-            {/* Movie Image & Information container */}
+            {/* Movie image & information container */}
             <div className="grid gap-8 lg:gap-0 lg:grid-cols-3">
 
-              {/* Image Container */}
-              <div className="">
+              {/* Image container */}
+              <div>
                 <img
                   alt={data.title}
                   src={data.poster_path
                     ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
                     : 'https://murphys-movies.vercel.app/movie-poster-placeholder.svg'}
-                  className="shadow-lg shadow-slate-900 rounded-lg object-contain mx-auto w-[80%]"
+                  className="shadow-lg shadow-slate-900 rounded-lg object-contain mx-auto w-[80%] max-w-xs"
                 />
               </div>
 
-              {/* Information Conatiner */}
+              {/* Information container */}
               <div className="mx-auto w-[90%] lg:col-span-2">
                 {/* Title */}
                 <h2 className="font-semibold text-center text-3xl lg:text-4xl">
@@ -148,20 +148,20 @@ function MovieInformation({ showSidebar }) {
                 {/* Navigation Buttons */}
                 <div className="mt-8">
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 xl:grid-cols-6">
-                    <button
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
+                    <a
+                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
                       target="_blank" rel="noopener noreferrer"
                       href={data?.homepage}
                     >
                       Website <i className="uil uil-globe"></i>
-                    </button>
-                    <button
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
+                    </a>
+                    <a
+                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
                       target="_blank" rel="noopener noreferrer"
                       href={`https://www.imdb.com/title/${data?.imdb_id}`}
                     >
                       IMDB <i className="uil uil-film"></i>
-                    </button>
+                    </a>
                     <button
                       className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
                       href="#"
@@ -186,7 +186,6 @@ function MovieInformation({ showSidebar }) {
                     <Link
                       className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
                       to="/"
-                      onClick={() => { }}
                     >
                       Back <i className="uil uil-arrow-left"></i>
                     </Link>
@@ -195,7 +194,7 @@ function MovieInformation({ showSidebar }) {
               </div>
             </div>
 
-            {/* Suggestions Container - You might also like */}
+            {/* Suggestions container - You might also like */}
             <div className="mt-16">
               <h2 className="font-semibold text-center text-3xl lg:text-4xl">
                 You might also like
@@ -217,7 +216,7 @@ function MovieInformation({ showSidebar }) {
               </div>
             </div>
 
-            {/* Movie Trailer */}
+            {/* Movie trailer modal */}
             <div>
               {
                 data?.videos?.results.length > 0

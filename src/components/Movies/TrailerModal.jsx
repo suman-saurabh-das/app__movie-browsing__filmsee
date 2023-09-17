@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TrailerModal({isModalOpen, setIsModalOpen, videos}) {
+function TrailerModal({ isModalOpen, setIsModalOpen, videos }) {
   const handleModalClose = (e) => {
     if (e.target.id === "modalWrapper") {
       setIsModalOpen(false)
@@ -19,6 +19,7 @@ function TrailerModal({isModalOpen, setIsModalOpen, videos}) {
             {
               videos?.results.length > 0
                 ? <iframe
+                  title="Movie trailer"
                   className="flex items-center justify-center object-cover h-full w-full"
                   allow="autoplay"
                   src={`https://www.youtube.com/embed/${videos.results[0].key}`}
