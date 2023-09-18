@@ -149,42 +149,42 @@ function MovieInformation({ showSidebar }) {
                 <div className="mt-8">
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 xl:grid-cols-6">
                     <a
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
+                      className="nav-button"
                       target="_blank" rel="noopener noreferrer"
                       href={data?.homepage}
                     >
                       Website <i className="uil uil-globe"></i>
                     </a>
                     <a
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
+                      className="nav-button"
                       target="_blank" rel="noopener noreferrer"
                       href={`https://www.imdb.com/title/${data?.imdb_id}`}
                     >
                       IMDB <i className="uil uil-film"></i>
                     </a>
                     <button
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm"
+                      className="nav-button"
                       href="#"
                       onClick={() => setIsModalOpen(true)}
                     >
                       Trailer <i className="uil uil-youtube"></i>
                     </button>
                     <button
-                      className={`border-2 border-gray-500 px-2 py-1 rounded-md text-sm ${isFavorited ? "bg-gray-200 text-black" : ""}`}
+                      className={`nav-button ${isFavorited ? "bg-gray-200 text-black" : ""}`}
                       onClick={addToFavorites}
                       disabled={isFavorited}
                     >
                       Favorite <i className="uil uil-heart"></i>
                     </button>
                     <button
-                      className={`border-2 border-gray-500 px-2 py-1 rounded-md text-sm ${isWatchlisted ? "bg-gray-200 text-black" : ""}`}
+                      className={`nav-button ${isWatchlisted ? "bg-gray-200 text-black" : ""}`}
                       onClick={addToWatchlist}
                       disabled={isWatchlisted}
                     >
                       Watchlist <i className="uil uil-10-plus"></i>
                     </button>
                     <Link
-                      className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center"
+                      className="nav-button"
                       to="/"
                     >
                       Back <i className="uil uil-arrow-left"></i>

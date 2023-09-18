@@ -7,6 +7,12 @@
   .main-container {
     @apply dark:bg-bgDarkPrimary h-[100vh] pt-32 sm:pt-24 sm:ml-56 text-black dark:text-white transition-all duration-500
   }
+  .nav-button {
+    @apply bg-gradient-to-r from-cyan-300 to-sky-300 hover:from-cyan-400 hover:to-sky-400 dark:from-zinc-500 dark:to-zinc-600 dark:hover:from-zinc-800 dark:hover:to-zinc-900 hover:cursor-pointer shadow-md shadow-zinc-600 dark:shadow-black px-2 py-2 rounded-md text-sm text-center
+  }
+  .login-button {
+    @apply flex gap-3 items-center justify-between bg-gradient-to-r from-teal-200 to-cyan-200 hover:from-teal-300 hover:to-cyan-300 dark:from-zinc-500 dark:to-zinc-600 dark:hover:from-zinc-800 dark:hover:to-zinc-900 hover:cursor-pointer shadow-md shadow-sky-900 dark:shadow-black px-2 lg:px-5 py-1 lg:py-2 rounded-full lg:rounded-lg text-sm text-center
+  }
 }
 
 /* width */

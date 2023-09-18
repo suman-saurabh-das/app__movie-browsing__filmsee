@@ -17,7 +17,7 @@ function Profile({ showSidebar }) {
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-2xl lg:text-3xl">My Profile</h3>
           <button 
-            className="border-2 border-gray-400 dark:border-white flex lg:font-semibold gap-3 items-center justify-between px-2 lg:px-3 py-1 rounded-md lg:rounded-lg text-sm lg:text-base"
+            className="login-button rounded-md px-3 lg:px-5 py-2 lg:font-semibold text-sm lg:text-base"
             onClick={logout}
           >
             Logout <i className="uil uil-signout lg:text-xl"></i>

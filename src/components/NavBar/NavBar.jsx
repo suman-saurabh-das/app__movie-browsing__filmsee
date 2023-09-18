@@ -81,13 +81,13 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
             {
               !isAuthenticated
                 ? <button
-                  className="border-2 border-gray-500 dark:border-white flex gap-3 items-center justify-between px-2 lg:px-3 py-1 rounded-full lg:rounded-lg"
+                  className="login-button"
                   onClick={fetchToken}
                 >
                   <span className="font-semibold hidden lg:block">Login</span>
                   <i className="uil uil-user text-xl"></i>
                 </button>
-                : <Link className="border-2 border-gray-500 dark:border-white flex gap-3 items-center justify-between px-2 lg:px-3 py-1 rounded-full lg:rounded-lg"
+                : <Link className="login-button"
                   to={`/profile/${user.id}`}
                 >
                   <span className="font-semibold hidden lg:block">My Movies</span>

@@ -4,6 +4,7 @@ import { useGetMoviesQuery } from '../../services/TMDB'
 
 import Loader from '../Common/Loader'
 import MovieList from './MovieList'
+import Pagination from '../Common/Pagination'
 
 function Movies({ showSidebar }) {
   const [page, setPage] = useState(1)
@@ -26,6 +27,7 @@ function Movies({ showSidebar }) {
         {
           !isFetching && !error && <>
             <MovieList movies={data} />
+            <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
           </>
         }
       </div>

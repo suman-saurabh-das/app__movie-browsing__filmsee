@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useGetActorDetailsQuery } from '../../services/TMDB'
 import { useGetMoviesByActorIdQuery } from '../../services/TMDB'
 
 import Loader from '../Common/Loader'
 import MovieCard from '../Movies/MovieCard'
+import Pagination from '../Common/Pagination'
 
 function Actors({ showSidebar }) {
   const { id } = useParams()
   const navigate = useNavigate()
   const { data, isFetching, error } = useGetActorDetailsQuery(id)
-  const page = 1;
+  const [page, setPage] = useState(1);
   const { data: movies, isFetching: isFetchingMovies } = useGetMoviesByActorIdQuery({ id, page })
   console.log(data, movies);
 
@@ -93,13 +94,16 @@ function Actors({ showSidebar }) {
                   isFetchingMovies
                     ? <Loader />
                     : movies.results.length > 0
-                      ? <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                        {
-                          movies.results.slice(0, 10).map(movie => (
-                            <MovieCard key={movie.id} movie={movie} />
-                          ))
-                        }
-                      </div>
+                      ? <>
+                        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                          {
+                            movies.results.map(movie => (
+                              <MovieCard key={movie.id} movie={movie} />
+                            ))
+                          }
+                        </div>
+                        <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
+                      </>
                       : <span>Unable to find any other movie !</span>
                 }
               </div>
