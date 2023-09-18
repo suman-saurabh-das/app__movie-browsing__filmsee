@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 
 import { searchMovie } from '../../features/currentGenreIdOrCategoryName'
 
 function SearchBar() {
   const [query, setQuery] = useState('')
   const dispatch = useDispatch()
+  const location = useLocation()
 
   const handleKeyPress = (event) => {
-    if(event.key === 'Enter')
+    if (event.key === 'Enter')
       dispatch(searchMovie(query))
   }
 
+  if (location.pathname !== '/') {
+    return null
+  }
   return (
     <div className="flex items-center border-b border-black dark:border-white w-full">
       <i className="uil uil-search"></i>

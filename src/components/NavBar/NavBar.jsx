@@ -35,7 +35,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
     <>
       {/* Top bar - START */}
       <div className="fixed bg-gradient-to-b from-sky-400 via-cyan-400 to-cyan-300 dark:from-black dark:via-zinc-900 dark:to-zinc-800 h-32 sm:h-24 shadow-black rounded-br-lg shadow-md transition-all duration-500 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-40">
-        <div className="flex items-center justify-between max-w-[95%] mx-auto pt-3 sm:pt-6">
+        <div className="flex items-center justify-between max-w-[90%] mx-auto pt-3 sm:pt-6">
           {/* App Logo Link - START */}
           <Link to="/">
             <img
@@ -47,7 +47,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
           {/* App Logo Link - END */}
 
           {/* Hamburger menu & Search Bar container - START */}
-          <div className="absolute sm:static flex items-center justify-center gap-6 bottom-4 w-[90%] sm:w-[50%]">
+          <div className="absolute sm:static flex items-center justify-between gap-6 bottom-4 w-[90%] sm:w-[50%]">
             {/* Hamburger Icon */}
             <button
               id="sidebarToggleBtn"

@@ -74,14 +74,15 @@ function MovieInformation({ showSidebar }) {
                 <div className="flex justify-between sm:justify-around items-center mt-8">
                   <div>
                     <Rating rating={data?.vote_average} />
-                    &emsp;
+                    &ensp;
                     <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-semibold">
                       {data?.vote_average} / 10
                     </span>
                   </div>
                   <div>
                     <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-semibold">
-                      {data?.runtime}m{data?.spoken_languages.length > 0 ? ` / ${data.spoken_languages[0].name}` : ""}
+                      <i className="uil uil-language text-xl"></i>
+                      {`: ${data.spoken_languages[0].name}`}
                     </span>
                   </div>
                 </div>

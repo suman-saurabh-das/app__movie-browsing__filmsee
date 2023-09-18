@@ -21,7 +21,11 @@ function App() {
       />
       <Routes>
         <Route 
-          path='/' 
+          exact path={'/'} 
+          element={<Movies showSidebar={showSidebar} />} 
+        />
+        <Route 
+          exact path={'/approved'} 
           element={<Movies showSidebar={showSidebar} />} 
         />
         <Route 
