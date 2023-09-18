@@ -1,29 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectGenreIdOrCategoryName } from '../../features/currentGenreIdOrCategoryName'
+import { useGetMovieQuery, useGetRecommendationsQuery, useGetUserMovieListQuery } from '../../services/TMDB'
+import { userSelector } from '../../features/auth'
+
+import genreIcons from '../../assets/genres'
 import Loader from '../Common/Loader'
 import Rating from '../Common/Rating'
-import genreIcons from '../../assets/genres'
-import { useDispatch } from 'react-redux'
-import { selectGenreIdOrCategoryName } from '../../features/currentGenreIdOrCategoryName'
-import { useGetMovieQuery } from '../../services/TMDB'
-import { useGetRecommendationsQuery } from '../../services/TMDB'
 import MovieCard from './MovieCard'
 import TrailerModal from './TrailerModal'
 
 function MovieInformation({ showSidebar }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { id } = useParams()
   const dispatch = useDispatch()
+  const { user } = useSelector(userSelector)
+  const { id } = useParams()
   const { data, isFetching, error } = useGetMovieQuery(id)
   const { data: recommendations, isFetching: isFetchingRecommendations } = useGetRecommendationsQuery({ movie_id: id, list: '/recommendations' })
 
-  const isFavorited = false
-  const isWatchlisted = false
-  const addToFavorites = () => {
+  const { data: favoriteMovies } = useGetUserMovieListQuery({ listName: '/favorite/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
+  const { data: watchlistMovies } = useGetUserMovieListQuery({ listName: '/watchlist/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
 
+  const [isMovieFavorited, setIsMovieFavorited] = useState(false)
+  const [isWatchlisted, setIsWatchlisted] = useState(false)
+
+  useEffect(() => {
+    setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id))
+  }, [favoriteMovies, data])
+  useEffect(() => {
+    setIsWatchlisted(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id))
+  }, [watchlistMovies, data])
+
+  const addToFavorites = async () => {
+    axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+      media_type: 'movie',
+      media_id: id,
+      favorite: !isMovieFavorited,
+    })
+    setIsMovieFavorited(prevVal => !prevVal)
   }
-  const addToWatchlist = () => {
 
+  const addToWatchlist = async () => {
+    axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+      media_type: 'movie',
+      media_id: id,
+      watchlist: !isWatchlisted,
+    })
+    setIsWatchlisted(prevVal => !prevVal)
   }
 
   return (
@@ -171,18 +196,16 @@ function MovieInformation({ showSidebar }) {
                       Trailer <i className="uil uil-youtube"></i>
                     </button>
                     <button
-                      className={`nav-button ${isFavorited ? "bg-gray-200 text-black" : ""}`}
+                      className={`nav-button`}
                       onClick={addToFavorites}
-                      disabled={isFavorited}
                     >
-                      Favorite <i className="uil uil-heart"></i>
+                      Favorite <i className={`uil uil-heart ${isMovieFavorited ? "text-red-600" : ""}`}></i>
                     </button>
                     <button
-                      className={`nav-button ${isWatchlisted ? "bg-gray-200 text-black" : ""}`}
+                      className={`nav-button`}
                       onClick={addToWatchlist}
-                      disabled={isWatchlisted}
                     >
-                      Watchlist <i className="uil uil-10-plus"></i>
+                      Watchlist <i className={`uil uil-10-plus ${isWatchlisted ? "text-red-600" : ""}`}></i>
                     </button>
                     <Link
                       className="nav-button"
@@ -222,10 +245,10 @@ function MovieInformation({ showSidebar }) {
               {
                 data?.videos?.results.length > 0
                   ? <TrailerModal
-                    isModalOpen={isModalOpen} 
-                    setIsModalOpen={setIsModalOpen} 
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
                     videos={data.videos}
-                    />
+                  />
                   : <p>No trailer found !</p>
               }
             </div>

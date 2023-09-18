@@ -29,13 +29,13 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
       }
     }
     logInUser()
-  }, [token])
+  }, [token, dispatch, sessionIdFromLocalStorage])
 
   return (
     <>
       {/* Top bar - START */}
-      <div className="fixed bg-gradient-to-b from-sky-400 via-cyan-400 to-cyan-300 dark:from-black dark:via-zinc-900 dark:to-zinc-800 h-32 sm:h-24 shadow-black rounded-br-lg shadow-md transition-all duration-500 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-40">
-        <div className="flex items-center justify-between max-w-[90%] mx-auto pt-3 sm:pt-6">
+      <div className="fixed bg-gradient-to-b from-sky-400 via-cyan-400 to-cyan-300 dark:from-black dark:via-zinc-900 dark:to-zinc-800 h-32 sm:h-24 rounded-br-lg shadow-md shadow-black transition-all duration-500 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-40">
+        <div className="flex items-center justify-between max-w-[90%] md:max-w-[95%] mx-auto pt-3 sm:pt-6">
           {/* App Logo Link - START */}
           <Link to="/">
             <img

@@ -8,7 +8,7 @@ function MovieCard({ movie }) {
       <Link to={`/movie/${movie.id}`}>
 
         {/* Image Container */}
-        <div className="mx-auto rounded-lg hover:scale-105 shadow-md shadow-slate-900 transition-all duration-300 w-full">
+        <div className="mx-auto rounded-lg hover:scale-105 shadow-md shadow-zinc-900 transition-all duration-300 w-full">
           <img
             alt={movie.title}
             src={movie.poster_path

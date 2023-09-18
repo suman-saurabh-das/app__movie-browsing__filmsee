@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useGetActorDetailsQuery } from '../../services/TMDB'
 import { useGetMoviesByActorIdQuery } from '../../services/TMDB'
 

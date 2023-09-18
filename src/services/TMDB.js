@@ -6,10 +6,12 @@ export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
   endpoints: (builder) => ({
+
     // Get Genres
     getGenres: builder.query({
       query: () => `genre/movie/list?api_key=${tmdbApiKey}`
     }),
+
     // Get movies by [Type]
     getMovies: builder.query({
       query: ({ genreIdOrCategoryName, page, searchQuery }) => {
@@ -32,21 +34,30 @@ export const tmdbApi = createApi({
         return `movie/popular?page=${page}&api_key=${tmdbApiKey}`
       }
     }),
+
     // Get Movie
     getMovie: builder.query({
       query: (id) => `/movie/${id}?append_to_response=videos,credits&api_key=${tmdbApiKey}`
     }),
+
     // Get user specific list (recommendations)
     getRecommendations: builder.query({
-      query: ({movie_id, list}) => `/movie/${movie_id}/${list}?api_key=${tmdbApiKey}`
+      query: ({ movie_id, list }) => `/movie/${movie_id}/${list}?api_key=${tmdbApiKey}`
     }),
+    
     // Get actor details
     getActorDetails: builder.query({
       query: (person_id) => `/person/${person_id}?api_key=${tmdbApiKey}`
     }),
+    
     // Get movies in which the actor has performed
     getMoviesByActorId: builder.query({
-      query: ({id, page}) => `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`
+      query: ({ id, page }) => `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`
+    }),
+    
+    // Get user favorite & watch-listed movie list
+    getUserMovieList: builder.query({
+      query: ({ listName, account_id, session_id, page }) => `/account/${account_id}/${listName}?api_key=${tmdbApiKey}&session_id=${session_id}&page=${page}`
     }),
   }),
 });
@@ -58,4 +69,5 @@ export const {
   useGetRecommendationsQuery,
   useGetActorDetailsQuery,
   useGetMoviesByActorIdQuery,
+  useGetUserMovieListQuery,
 } = tmdbApi
