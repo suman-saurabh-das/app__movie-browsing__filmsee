@@ -4,7 +4,7 @@ import Rating from '../Common/Rating'
 
 function MovieCard({ movie }) {
   return (
-    <div className="p-5 sm:p-3">
+    <div className="p-3">
       <Link to={`/movie/${movie.id}`}>
 
         {/* Image Container */}

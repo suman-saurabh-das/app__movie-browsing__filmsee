@@ -22,15 +22,15 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #dadada;
+  background: #cacaca;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #bababa;
+  background: #9a9a9a;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #aaaaaa;
+  background: #5a5a5a;
 }
