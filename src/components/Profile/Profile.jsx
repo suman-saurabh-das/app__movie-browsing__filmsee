@@ -51,7 +51,7 @@ function Profile({ showSidebar }) {
                     : <>
                       <h3 className="font-semibold my-8 text-xl lg:text-2xl">Favorites</h3>
                       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                        {favoriteMovies?.results.map(favMovie => <MovieCard movie={favMovie} />)}
+                        {favoriteMovies?.results.map(favMovie => <MovieCard key={favMovie.id} movie={favMovie} />)}
                       </div>
                     </>
                 }
@@ -62,7 +62,7 @@ function Profile({ showSidebar }) {
                     : <>
                       <h3 className="font-semibold my-8 text-xl lg:text-2xl">Watch-List</h3>
                       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                        {watchListMovies?.results.map(watchListMovie => <MovieCard movie={watchListMovie} />)}
+                        {watchListMovies?.results.map(watchListMovie => <MovieCard key={watchListMovie.id} movie={watchListMovie} />)}
                       </div>
                     </>
 

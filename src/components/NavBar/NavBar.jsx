@@ -31,6 +31,8 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
     logInUser()
   }, [token, dispatch, sessionIdFromLocalStorage])
 
+  console.log(user);
+
   return (
     <>
       {/* Top bar - START */}
@@ -87,11 +89,19 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
                   <span className="font-semibold hidden lg:block">Login</span>
                   <i className="uil uil-user text-xl"></i>
                 </button>
-                : <Link className="login-button"
+                : <Link className="login-button px-0 py-0 lg:px-5 lg:py-2"
                   to={`/profile/${user.id}`}
                 >
                   <span className="font-semibold hidden lg:block">My Movies</span>
-                  <i className="uil uil-user text-xl"></i>
+                  {
+                    user?.avatar?.tmdb?.avatar_path
+                      ? <img
+                        className="h-8 rounded-full w-8"
+                        src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`}
+                        alt="user-profile-img"
+                      />
+                      : <i className="uil uil-user text-xl"></i>
+                  }
                 </Link>
             }
           </div>

@@ -6,7 +6,7 @@ function FeaturedMovie({ movie }) {
   if (!movie) return null
 
   return (
-    <div className="p-3 lg:p-3 mb-6 text-white">
+    <div className="relative p-3 lg:p-3 mb-6 text-white -z-10">
       <Link
         to={`/movie/${movie.id}`}
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})` }}
