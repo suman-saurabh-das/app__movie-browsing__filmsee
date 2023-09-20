@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { userSelector } from '../../features/auth'
 import { selectGenreIdOrCategoryName } from '../../features/currentGenreIdOrCategoryName'
 import { useGetMovieQuery, useGetRecommendationsQuery, useGetUserMovieListQuery } from '../../services/TMDB'
-import { userSelector } from '../../features/auth'
 
 import genreIcons from '../../assets/genres'
 import Loader from '../Common/Loader'
@@ -13,18 +13,18 @@ import MovieCard from './MovieCard'
 import TrailerModal from './TrailerModal'
 
 function MovieInformation({ showSidebar }) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const dispatch = useDispatch()
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { user } = useSelector(userSelector)
   const { id } = useParams()
   const { data, isFetching, error } = useGetMovieQuery(id)
   const { data: recommendations, isFetching: isFetchingRecommendations } = useGetRecommendationsQuery({ movie_id: id, list: '/recommendations' })
 
-  const { data: favoriteMovies } = useGetUserMovieListQuery({ listName: '/favorite/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
-  const { data: watchlistMovies } = useGetUserMovieListQuery({ listName: '/watchlist/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
-
   const [isMovieFavorited, setIsMovieFavorited] = useState(false)
+  const { data: favoriteMovies } = useGetUserMovieListQuery({ listName: '/favorite/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
+
   const [isWatchlisted, setIsWatchlisted] = useState(false)
+  const { data: watchlistMovies } = useGetUserMovieListQuery({ listName: '/watchlist/movies', account_id: user.id, session_id: localStorage.getItem('session_id'), page: 1 })
 
   useEffect(() => {
     setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id))
@@ -155,7 +155,7 @@ function MovieInformation({ showSidebar }) {
                           to={`/actors/${character.id}`}
                         >
                           <img
-                            className="object-cover rounded-lg max-w-[7rem] mx-auto mb-2"
+                            className="object-cover rounded-lg max-w-[7rem] mx-auto mb-2 shadow-md shadow-zinc-900"
                             src={`https://image.tmdb.org/t/p/w500${character.profile_path}`}
                             alt={character?.name}
                           />
@@ -242,15 +242,11 @@ function MovieInformation({ showSidebar }) {
 
             {/* Movie trailer modal */}
             <div>
-              {
-                data?.videos?.results.length > 0
-                  ? <TrailerModal
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
-                    videos={data.videos}
-                  />
-                  : <p>No trailer found !</p>
-              }
+              <TrailerModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                videos={data.videos}
+              />
             </div>
           </>
         }

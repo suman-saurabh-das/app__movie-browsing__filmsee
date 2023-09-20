@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Rating({rating}) {
+function Rating({ rating }) {
   return (
     <>
       {
@@ -8,7 +8,7 @@ function Rating({rating}) {
           let number = index + 0.5
           return (
             <span key={index}>
-              {// Logic : rating = 4.4, i+1 = 1, n = 0.5 (loop over to get rating)
+              { // Logic : rating = 4.4, i+1 = 1, n = 0.5 (loop over to get rating)
                 (rating / 2) >= index + 1
                   ? (<i className="uis uis-star text-yellow-500"></i>)
                   : rating / 2 >= number

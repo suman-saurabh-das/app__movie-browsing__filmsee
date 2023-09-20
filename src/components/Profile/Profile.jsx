@@ -31,7 +31,9 @@ function Profile({ showSidebar }) {
     >
       <div className="p-4 pt-6 sm:p-6 lg:p-8">
         <div className="flex flex-wrap gap-4 items-center justify-between">
-          <h3 className="font-semibold text-2xl lg:text-3xl">My Profile - @{user.username}</h3>
+          <h3 className="font-semibold text-2xl lg:text-3xl">
+            My Profile - @{user.username}
+          </h3>
           <button
             className="login-button rounded-md px-3 lg:px-5 py-2"
             onClick={logout}
@@ -65,7 +67,6 @@ function Profile({ showSidebar }) {
                         {watchListMovies?.results.map(watchListMovie => <MovieCard key={watchListMovie.id} movie={watchListMovie} />)}
                       </div>
                     </>
-
                 }
               </>
           }

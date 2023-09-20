@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import appLogo from '../../assets/navbar/appLogoDark.png'
 import { Link } from 'react-router-dom'
-import SideBar from './SideBar'
-import SearchBar from './SearchBar'
-
 import { fetchToken, createSessionId, moviesApi } from '../../utils'
 import { setUser, userSelector } from '../../features/auth'
 
+import appLogo from '../../assets/navbar/appLogoDark.png'
+import SideBar from './SideBar'
+import SearchBar from './SearchBar'
+
 function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
+  const dispatch = useDispatch()
   const { isAuthenticated, user } = useSelector(userSelector)
   const token = localStorage.getItem('request_token')
   const sessionIdFromLocalStorage = localStorage.getItem('session_id')
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const logInUser = async () => {
@@ -30,8 +29,6 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
     }
     logInUser()
   }, [token, dispatch, sessionIdFromLocalStorage])
-
-  console.log(user);
 
   return (
     <>
@@ -89,7 +86,8 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
                   <span className="font-semibold hidden lg:block">Login</span>
                   <i className="uil uil-user text-xl"></i>
                 </button>
-                : <Link className="login-button px-0 py-0 lg:px-5 lg:py-2"
+                : <Link
+                  className="login-button px-0 py-0 lg:px-5 lg:py-2"
                   to={`/profile/${user.id}`}
                 >
                   <span className="font-semibold hidden lg:block">My Movies</span>
@@ -100,7 +98,7 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
                         src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`}
                         alt="user-profile-img"
                       />
-                      : <i className="uil uil-user text-xl"></i>
+                      : <i className="px-2 py-1 uil uil-user text-xl"></i>
                   }
                 </Link>
             }

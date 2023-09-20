@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
 import { searchMovie } from '../../features/currentGenreIdOrCategoryName'
 
 function SearchBar() {
@@ -14,9 +13,8 @@ function SearchBar() {
       dispatch(searchMovie(query))
   }
 
-  if (location.pathname !== '/') {
-    return null
-  }
+  if (location.pathname !== '/') { return null }
+
   return (
     <div className="flex items-center border-b border-black dark:border-white w-full">
       <i className="uil uil-search"></i>

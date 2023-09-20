@@ -6,10 +6,15 @@ function TrailerModal({ isModalOpen, setIsModalOpen, videos }) {
       setIsModalOpen(false)
     }
   }
+
   return (
     <>
       {
-        isModalOpen && <div id="modalWrapper" onClick={handleModalClose} className="absolute top-0 left-0 bg-black/[0.5] h-full w-full">
+        isModalOpen && <div
+          id="modalWrapper"
+          onClick={handleModalClose}
+          className="absolute top-0 left-0 bg-black/[0.5] h-full w-full"
+        >
           <div className="relative top-1/2 left-1/2 right-56 -translate-x-1/2 -translate-y-1/2 h-[50vh] md:h-[65vh] w-[90%] sm:w-4/6 2xl:w-1/2 z-50">
             <button
               className="bg-white p-2 rounded-lg font-bold hover:rotate-90 hover:text-red-600 transition-all duration-300 text-black absolute -bottom-16 left-1/2 -translate-x-1/2"
@@ -24,7 +29,7 @@ function TrailerModal({ isModalOpen, setIsModalOpen, videos }) {
                   allow="autoplay"
                   src={`https://www.youtube.com/embed/${videos.results[0].key}`}
                   frameborder="0"></iframe>
-                : <p>No trailer found !</p>
+                : <p className='relative top-1/2 -translate-x-1/2 left-1/2 bg-white font-semibold p-4 rounded-md text-black text-xl w-fit'>Sorry, no trailer found !</p>
             }
           </div>
         </div>

@@ -12,9 +12,8 @@ function Pagination({ currentPage, totalPages, setPage }) {
     }
   }
 
-  if (totalPages === 0) {
-    return null
-  }
+  if (totalPages === 0) { return null }
+
   return (
     <div className="flex font-semibold items-center justify-between px-3 mx-auto my-8">
       <button

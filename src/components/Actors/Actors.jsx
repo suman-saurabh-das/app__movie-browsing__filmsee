@@ -8,12 +8,11 @@ import MovieCard from '../Movies/MovieCard'
 import Pagination from '../Common/Pagination'
 
 function Actors({ showSidebar }) {
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const { data, isFetching, error } = useGetActorDetailsQuery(id)
   const [page, setPage] = useState(1);
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const { data, isFetching, error } = useGetActorDetailsQuery(id)
   const { data: movies, isFetching: isFetchingMovies } = useGetMoviesByActorIdQuery({ id, page })
-  console.log(data, movies);
 
   return (
     <main className={`main-container 
@@ -43,7 +42,7 @@ function Actors({ showSidebar }) {
                   src={data.profile_path
                     ? `https://image.tmdb.org/t/p/w500/${data.profile_path}`
                     : 'https://murphys-movies.vercel.app/movie-poster-placeholder.svg'}
-                  className="shadow-lg shadow-slate-900 rounded-lg object-contain mx-auto w-[80%] max-w-xs"
+                  className="shadow-lg shadow-zinc-900 rounded-lg object-contain mx-auto w-[80%] max-w-xs"
                 />
               </div>
 
@@ -56,7 +55,9 @@ function Actors({ showSidebar }) {
 
                 {/* Birth details */}
                 <h3 className="font-semibold mt-8 lg:text-lg">
-                  Born: <span className="[word-spacing:0.2rem]">{new Date(data?.birthday).toDateString()}</span>
+                  Born: <span className="[word-spacing:0.2rem]">
+                    {new Date(data?.birthday).toDateString()}
+                  </span>
                 </h3>
 
                 {/* Bio */}
@@ -67,14 +68,14 @@ function Actors({ showSidebar }) {
                 {/* Navigation Buttons */}
                 <div className="flex mt-8 gap-2 md:w-1/2">
                   <a
-                    className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center w-full"
+                    className="nav-button w-full"
                     target="_blank" rel="noopener noreferrer"
                     href={`https://www.imdb.com/name/${data?.imdb_id}`}
                   >
                     IMDB <i className="uil uil-film"></i>
                   </a>
                   <button
-                    className="border-2 border-gray-500 px-2 py-1 rounded-md text-sm text-center w-full"
+                    className="nav-button w-full"
                     onClick={() => navigate(-1)}
                   >
                     Back <i className="uil uil-arrow-left"></i>
