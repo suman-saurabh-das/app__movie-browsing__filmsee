@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { fetchToken, createSessionId, moviesApi } from '../../utils'
 import { setUser, userSelector } from '../../features/auth'
 
-import appLogo from '../../assets/navbar/appLogoDark.png'
+import appLogo from '../../assets/navbar/appLogo.png'
 import SideBar from './SideBar'
 import SearchBar from './SearchBar'
 
@@ -36,12 +36,15 @@ function NavBar({ darkTheme, setDarkTheme, showSidebar, setShowSidebar }) {
       <div className="fixed bg-gradient-to-b from-sky-400 via-cyan-400 to-cyan-300 dark:from-black dark:via-zinc-900 dark:to-zinc-800 h-32 sm:h-24 rounded-br-lg shadow-md shadow-black transition-all duration-500 dark:text-white w-full 2xl:max-w-[1920px] mx-auto z-40">
         <div className="flex items-center justify-between max-w-[90%] md:max-w-[95%] mx-auto pt-3 sm:pt-6">
           {/* App Logo Link - START */}
-          <Link to="/">
+          <Link 
+            className="flex gap-1 items-center justify-center"
+            to="/">
             <img
-              className="w-32 sm:w-36 md:w-40 dark:invert"
+              className="w-8 sm:w-10 dark:invert transition-all duration-500"
               src={appLogo}
               alt="Filmsee Logo"
             />
+            <h3 className="font-bold text-3xl sm:text-4xl">Filmsee</h3>
           </Link>
           {/* App Logo Link - END */}
 

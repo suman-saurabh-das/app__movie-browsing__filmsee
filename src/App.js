@@ -8,7 +8,7 @@ import MovieInformation from './components/Movies/MovieInformation'
 import Profile from './components/Profile/Profile'
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(false)
+  const [darkTheme, setDarkTheme] = useState(true)
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
